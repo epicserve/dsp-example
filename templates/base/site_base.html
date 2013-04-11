@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        {% block head %}{% block title_tag %}<title>{% block title %}{% if page.title %}{{ page.title }}{% endif %}{% endblock %}{% if site_name %} - {{ site_name }}{% endif %}</title>{% endblock %}
+        {% block meta %}{% endblock meta %}
+
+        {% block link %}
+        <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet">
+        <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+        </style>
+        <link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        {% endblock link %}
+
+        {% block script %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+        {% endblock script %}{% endblock head %}
+    </head>
+
+    <body{% block body_attr %} class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}"{% endblock %}>
+
+        <div class="navbar navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="brand" href="{% url 'site_index' %}">django-stripe-payments</a>
+              <div class="nav-collapse collapse">
+                <p class="navbar-text pull-right">
+                {% if user.is_authenticated %}
+                Signed in as {{ user.username }} | <a href="{% url 'signout' %}">Sign out</a>
+                {% else %}
+                <a href="{% url 'signin' %}">Sign in</a>
+                {% endif %}
+                </p>
+                <ul class="nav">
+                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Payments <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'payments_subscribe' %}">Subscribe</a></li>
+                        <li><a href="{% url 'payments_change_plan' %}">Change Subscribe</a></li>
+                        <li><a href="{% url 'payments_change_card' %}">Change Card</a></li>
+                        <li><a href="{% url 'payments_cancel' %}">Cancel Subscription</a></li>
+                        <li><a href="{% url 'payments_history' %}">Payment History</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                {% block body %}
+                {% endblock body %}
+                </div>
+            </div>
+        </div>
+
+        {% block bottom_script %}
+        <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+        {% endblock bottom_script %}
+
+    </body>
+</html>

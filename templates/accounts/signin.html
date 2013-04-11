@@ -1,0 +1,31 @@
+{% extends "site_base.html" %}
+
+{% load bootstrap_tags %}
+
+{% block title %}Sign In{% endblock title %}
+
+{% block body %}
+<div class="row">
+    <div class="span4 offset4">
+        <form class="well" action="." method="post" id="signin_form">
+            <fieldset>
+                <legend>Sign in</legend>
+
+                {{ form|as_bootstrap }}
+
+            </fieldset>
+
+            <div>
+                <hr>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+                {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+            </div>
+
+            {% csrf_token %}
+
+        </form>
+
+    </div>
+
+</div>
+{% endblock body %}
