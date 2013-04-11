@@ -14,6 +14,7 @@ To install this example site, do the following (your mileage may vary).
 	$ cd dsp-example
     $ add2virtualenv .
 	$ pip install -r config/requirements/base.txt
+	$ workon django-stripe-payments
 	$ export DJANGO_SETTINGS_MODULE=config.settings
 	$ django-admin.py syncdb
 
