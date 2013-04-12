@@ -39,7 +39,7 @@
               <div class="nav-collapse collapse">
                 <p class="navbar-text pull-right">
                 {% if user.is_authenticated %}
-                Signed in as {{ user.username }} | <a href="{% url 'signout' %}">Sign out</a>
+                Signed in as {{ user.username }} |{% if user.is_staff %} <a href="{% url 'admin:index' %}">Admin</a> |{% endif %} <a href="{% url 'signout' %}">Sign out</a>
                 {% else %}
                 <a href="{% url 'signin' %}">Sign in</a>
                 {% endif %}
