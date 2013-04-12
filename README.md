@@ -40,9 +40,7 @@ if you want to use your Gmail account.
 	EMAIL_PORT = 587
 	EMAIL_USE_TLS = True
 
-
-Add your `STRIPE_PUBLIC_KEY` and `STRIPE_SECRET_KEY` in
-`config/settings/local.py` and then run the following management commands.
+Next, run the following management commands.
 
 	$ django-admin.py init_customers
 	$ django-admin.py init_plans
