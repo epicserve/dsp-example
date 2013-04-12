@@ -52,7 +52,7 @@ Now you're ready to run the example site.
 You'll also need to open up a different tab in your terminal and run a service
 like [localtunnel](http://progrium.com/localtunnel/) (free service) or
 [Forward](https://forwardhq.com/) (paid service). The following is an example
-if you use Foward.
+if you use Forward.
 
 	$ forward 8000
 	Forwarding port 8000 to https://username.fwd.wf
